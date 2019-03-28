@@ -80,6 +80,70 @@ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://1f637783
 		storage 和 bootstrap/cache 目录对 Web 服务器指定的用户而言应该是可写的，否则 Laravel 应用将不能正常运行。
 		如果你使用 Homestead 虚拟机做为开发环境，这些权限已经设置好了。
 
+##git关联已有项目到远程仓库分支(远程分支也有内容)：
+
+1. git初始化
+git init
+
+2. 提交本地文件
+git add&git commit
+
+3. 设置项目账号密码
+git config --local user.name 'yellowbright' && git config --local user.email '34576804@qq.com'
+
+4. git添加远程仓库
+git remote add origin https://github.com/yellowbright/Laravel57.git
+
+		查看远程分支关联
+		git remote||git remote -v
+
+5. 关联远程分支
+git branch --set-upstream-to=origin/master master
+
+6. 拉去远程仓库内容
+git pull --allow-unrelated-histories || git pull origin master --allow-unrelated-histories
+
+7. 推送到远程仓库(分支第一次推送要加-u,这里不用加-u,因为步奏5已经做了分支关联操作)
+git push origin master
+
+8. 检出dev分支
+git checkout -b dev
+
+9. 推送dev分支(经测试这里会新建并自动关联远程dev分支)
+git push origin dev
+
+###fatal: refusing to merge unrelated histories
+	出现这个问题的最主要原因还是在于本地仓库和远程仓库实际上是独立的两个仓库。假如我之前是直接clone的方式在本地建立起远程github仓库的克隆本地仓库就不会有这问题了。
+	
+	查阅了一下资料，发现可以在pull命令后紧接着使用--allow-unrelated-history选项来解决问题（该选项可以合并两个独立启动仓库的历史）。
+	
+	命令：
+	git pull --allow-unrelated-histories || git pull origin master --allow-unrelated-histories
+
+##git同时使用github&gitlab
+
+	#gitlab
+	cd ~/workspace/gitlab
+	git init
+	git config --global user.name 'gitlab'
+	git config --global user.email 'gitlab@company.com'
+	
+	通过修改本地配置来使用不同的账号邮箱
+	#github
+	cd ~/workspace/github
+	git init
+	git config --local user.name 'yellowbright'
+	git config --local user.email '34576804@qq.com'
+
+	Git查看配置命令
+	config 配置有system级别 global（用户级别） 和local（当前仓库）三个 设置先从system-》global-》local 底层配置会覆盖顶层配置 分别使用–system/global/local 可以定位到配置文件
+	查看系统config
+	git config --system --list
+	查看当前用户（global）配置
+	git config --global  --list
+	查看当前仓库配置信息
+	git config --local  --list
+
 ##mysql更新版本和密码：
 
 	laradock 默认装的是 mysql 最新版本(mysql8)，
