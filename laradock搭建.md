@@ -3,6 +3,7 @@
 
 2. 安装docker
 http://www.runoob.com/docker/centos-docker-install.html
+https://docker_practice.gitee.io/install/ubuntu.html (推荐:国内镜像安装更快)
 
 3. 安装git
 http://www.runoob.com/git/git-install-setup.html
