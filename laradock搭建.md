@@ -2,28 +2,41 @@
 1. 搭建centos系统
 
 2. 安装docker
-http://www.runoob.com/docker/centos-docker-install.html
-https://docker_practice.gitee.io/install/ubuntu.html (推荐:国内镜像安装更快)
+
+		http://www.runoob.com/docker/centos-docker-install.html
+		https://docker_practice.gitee.io/install/ubuntu.html (推荐:国内镜像安装更快)
 
 3. 安装git
-http://www.runoob.com/git/git-install-setup.html
+
+		http://www.runoob.com/git/git-install-setup.html
 
 4. 安装laradock
-https://laradock.io/getting-started/#B
+
+		https://laradock.io/getting-started/#B
 
 5. 安装docker-composer
-https://docs.docker.com/compose/install/
+ 
+		https://docs.docker.com/compose/install/
 
 6. docker国内镜像加速
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://1f637783.m.daocloud.io
+
+		curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://1f637783.m.daocloud.io
+
+7. 安装composer
+ 
+		https://docs.phpcomposer.com/00-intro.html#Globally
+
+7. 中国镜像
+
+		https://pkg.phpcomposer.com/
 
 7. 安装laravel
 
-	 	composer create-project --prefer-dist laravel/laravel blog 5.4.*
+		composer create-project --prefer-dist laravel/laravel blog 5.4.*
 
 7. 更改laravel storage目录权限
 
-	The stream or file "/var/www/Test1227/storage/logs/laravel-2018-12-27.log" could not be opened: failed to open stream: Permission denied
+		The stream or file "/var/www/Test1227/storage/logs/laravel-2018-12-27.log" could not be opened: failed to open stream: Permission denied
 
 由于php-fpm的用户和组都是www-data,而laravel最终执行用户是www-data,所以要递归修改目录权限
 
