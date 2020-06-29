@@ -1,0 +1,129 @@
+version: '2.2'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+    container_name: es01
+    environment:
+      - node.name=es01
+      - discovery.seed_hosts=es02
+      - cluster.initial_master_nodes=es01,es02
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - 9207:9200
+    networks:
+      - esnet
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+    container_name: es02
+    environment:
+      - node.name=es02
+      - discovery.seed_hosts=es01
+      - cluster.initial_master_nodes=es01,es02
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata02:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+    container_name: es03
+    environment:
+      - node.name=es03
+      - discovery.seed_hosts=es01
+      - cluster.initial_master_nodes=es01,es02
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata03:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+  es04:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+    container_name: es04
+    environment:
+      - node.name=es04
+      - discovery.seed_hosts=es01
+      - cluster.initial_master_nodes=es01,es02
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata04:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+  es05:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+    container_name: es05
+    environment:
+      - node.name=es05
+      - discovery.seed_hosts=es02
+      - cluster.initial_master_nodes=es01,es02
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata05:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+
+volumes:
+  esdata01:
+    driver: local 
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/ssd1/docker/es-cluster/es01'
+  esdata02:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/ssd1/docker/es-cluster/es02'
+  esdata03:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/ssd1/docker/es-cluster/es03'
+  esdata04:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/ssd1/docker/es-cluster/es04'
+  esdata05:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/ssd1/docker/es-cluster/es05'
+
+networks:
+  esnet:

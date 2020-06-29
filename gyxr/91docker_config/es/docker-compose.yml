@@ -1,0 +1,29 @@
+version: '2'
+services:
+  DEV:
+    restart: always
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:6.4.0'
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - /data2/docker/es-dev:/usr/share/elasticsearch/data
+  QA:
+    restart: always
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:6.4.0'
+    ports:
+      - 9201:9200
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - /data2/docker/es-qa:/usr/share/elasticsearch/data
+  GA:
+    restart: always
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:6.4.0'
+    ports:
+      - 9203:9200
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - /data2/docker/es-ga:/usr/share/elasticsearch/data

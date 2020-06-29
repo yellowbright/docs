@@ -1,0 +1,26 @@
+version: '2'
+services:
+  DEV:
+    restart: always
+    image: 'redis:5.0'
+    ports:
+      - 6379:6379
+    volumes:
+      - /data2/docker/redis-dev:/data
+    mem_limit: 1g
+  QA:
+    restart: always
+    image: 'redis:5.0'
+    ports:
+      - 16379:6379
+    volumes:
+      - /data2/docker/redis-qa:/data
+    mem_limit: 1g
+  GA:
+    restart: always
+    image: 'redis:5.0'
+    ports:
+      - 36379:6379 
+    volumes:
+      - /data2/docker/redis-ga:/data
+    mem_limit: 4g

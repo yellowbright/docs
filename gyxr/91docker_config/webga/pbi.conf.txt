@@ -1,0 +1,35 @@
+server {
+    listen  80;
+    server_name pbi.hz.gyxr.cn; 
+
+    #charset koi8-r;
+    #access_log  logs/host.access.log  main;
+
+    root /fs/webroot/GA/pbi/public;
+    index  index.html index.php;
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        add_header 'Access-Control-Allow-Origin' '$http_origin' always;
+        add_header 'Access-Control-Allow-Methods' 'GET,OPTIONS,PUT,DELETE,POST' always;
+        add_header 'Access-Control-Allow-Credentials' 'true' always;
+        add_header 'Access-Control-Allow-Headers' 'Authorization,DNT,User-Agent,Keep-Alive,Content-Type,accept,origin,X-Requested-With' always;
+
+        gzip on;
+        gzip_min_length 1k;
+        gzip_buffers 4 16k;
+        gzip_http_version 1.0;
+        gzip_comp_level 2;
+        gzip_types text/plain application/json text/css text/javascript image/jpeg image/gif image/png;
+        gzip_vary on;
+        gzip_disable "MSIE [1-6]\.";
+
+        try_files $uri =404;
+        fastcgi_pass   PHP:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}

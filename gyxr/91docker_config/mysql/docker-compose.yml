@@ -1,0 +1,72 @@
+version: '2'
+services:
+  DEV:
+    image: 'mysql:5.7'
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /data2/docker/mysql-dev:/var/lib/mysql
+      - /data2/docker/config/mysql-dev:/etc/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 5HkC2OLp 
+  QA:
+    image: 'mysql:5.7'
+    restart: always
+    ports:
+      - 33061:3306
+    volumes:
+      - /data2/docker/mysql-qa:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 5HkC2OLp 
+  GA:
+    image: 'mysql:5.7'
+    restart: always
+    ports:
+      - 33063:3306
+    volumes:
+      - /ssd1/docker/mysql-ga:/var/lib/mysql
+      - /data2/docker/config/mysql-ga:/etc/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 5HkC2OLp 
+
+  gabak:
+    image: 'mysql:5.7'
+    ports:
+      - 33068:3306
+    volumes:
+      - /data3/mysql-ga:/var/lib/mysql
+      - /data2/docker/config/mysql-ga:/etc/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1qaz2wsx
+
+  data:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 33064:3306
+    volumes:
+      - /data2/docker/mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 9eHV5PU2
+  jvdev:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 33065:3306
+    volumes:
+      - /data2/docker/mysql-jvdev:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1iHp32U2
+  jvpro:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 33066:3306
+    volumes:
+      - /data2/docker/mysql-jvpro:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: UiHpa2U2
+
+
+

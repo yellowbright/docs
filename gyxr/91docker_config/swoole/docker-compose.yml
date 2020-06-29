@@ -1,0 +1,11 @@
+version: '2'
+services:
+  lab:
+    image: 'easyswoole/easyswoole3:latest'
+    hostname: 'swoole'
+    ports:
+      - "2022:22"
+      - "9501:9501"
+      - "9502:9502"
+    volumes:
+      - /data2/docker/swoole/lab:/easyswoole2

@@ -1,0 +1,24 @@
+version: '2'
+services:
+  master:
+    image: 'hans/hdpnode'
+    ports:
+      - 50070:50070
+    volumes:
+      - /data2/docker/hadoop/name:/usr/local/hadoop/hdfs/name
+    tty: true
+    hostname: master
+
+  slave1:
+    image: 'hans/hdpnode'
+    volumes:
+      - /data2/docker/hadoop/data1:/usr/local/hadoop/hdfs/data
+    tty: true
+    hostname: slave1 
+
+  slave2:
+    image: 'hans/hdpnode'
+    volumes:
+      - /data2/docker/hadoop/data2:/usr/local/hadoop/hdfs/data
+    tty: true
+    hostname: slave2

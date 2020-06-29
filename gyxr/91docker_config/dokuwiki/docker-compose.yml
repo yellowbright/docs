@@ -1,0 +1,12 @@
+version: '2'
+services:
+  dokuwiki:
+    image: 'bitnami/dokuwiki:latest'
+    restart: always
+    ports:
+      - '8280:80'
+    volumes:
+      - 'dokuwiki_data:/bitnami'
+volumes:
+  dokuwiki_data:
+    driver: local

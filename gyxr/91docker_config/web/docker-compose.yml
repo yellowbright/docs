@@ -1,0 +1,39 @@
+version: '2'
+services:
+  DEV:
+    image: 'gyxr-web:190528'
+    hostname: 'H91-GYXR-DEV'
+    restart: always
+    ports:
+      - "1022:22"
+      - "1080:80"
+    volumes:
+      - /data2/docker/web-dev:/fs
+  QA:
+    image: 'gyxr-web:20190111'
+    hostname: 'H91-GYXR-QA'
+    restart: always
+    ports:
+      - "3022:22"
+      - "3080:80"
+    volumes:
+      - /data2/docker/web-qa:/fs
+    mem_limit: 1g
+  GA:
+    image: 'gyxr-web:20190111'
+    hostname: 'H91-GYXR-GA'
+    restart: always
+    ports:
+      - "5022:22"
+      - "5080:80"
+    volumes:
+      - /data2/docker/web-ga:/fs
+  DEV-PHP56:
+    image: 'gyxr-web:20190111'
+    hostname: 'H91-GYXR-DEV-PHP56'
+    restart: always
+    ports:
+      - "1122:22"
+      - "1180:80"
+    volumes:
+      - /data2/docker/web-dev-php56:/fs

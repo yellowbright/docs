@@ -1,0 +1,7 @@
+version: '2'
+services:
+  default:
+    image: 'tabix'
+    restart: always
+    ports:
+      - 8080:80

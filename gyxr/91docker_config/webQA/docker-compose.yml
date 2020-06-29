@@ -1,0 +1,22 @@
+version: '2'
+services:
+  PHP:
+    image: 'gyxr/php:7.2.24'
+    hostname: 'dev'
+    restart: always
+    volumes:
+      - /data2/nfs2/qa:/fs
+      - /data2/nfs2/qa/webroot:/home/www/webroot
+    ports:
+      - "3022:22"
+
+  NG:
+    image: 'gyxr/nginx:2.3.2'
+    hostname: 'nginx'
+    restart: always
+    ports:
+      - "3080:80"
+    volumes:
+      - /data2/nfs2/qa:/fs
+    depends_on:
+      - PHP

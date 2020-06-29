@@ -1,0 +1,32 @@
+version: '2'
+services:
+  TEST:
+    image: 'mcr.microsoft.com/mssql/server:2017-latest'
+    restart: always
+    ports:
+      - 14034:1433
+    volumes:
+      - /data2/docker/mssql-test:/var/opt/mssql
+    environment:
+      SA_PASSWORD: 5HkC2OLp 
+      ACCEPT_EULA: Y
+  QA:
+    image: 'mcr.microsoft.com/mssql/server:2017-latest'
+    restart: always
+    ports:
+      - 14035:1433
+    volumes:
+      - /data2/docker/mssql-qa:/var/opt/mssql
+    environment:
+      SA_PASSWORD: 5HkC2OLp 
+      ACCEPT_EULA: Y
+  GA:
+    image: 'mcr.microsoft.com/mssql/server:2017-latest'
+    restart: always
+    ports:
+      - 14036:1433
+    volumes:
+      - /data2/docker/mssql-ga:/var/opt/mssql
+    environment:
+      SA_PASSWORD: 5HkC2OLp 
+      ACCEPT_EULA: Y

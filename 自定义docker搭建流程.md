@@ -1,4 +1,4 @@
-#自定义docker搭建流程
+﻿#自定义docker搭建流程
 1. 搭建ubuntu系统
 
 2. 腾讯云使用root账号密码登录
@@ -38,3 +38,5 @@ https://github.com/ydtg1993/server
 		find /data/wwwroot/ -type f -exec chmod 644 {} \;
 
 		chmod -R 775 storage
+
+		权限分配最好使用laradock和nginx-php的配置方法

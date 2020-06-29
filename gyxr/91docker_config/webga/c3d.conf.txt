@@ -1,0 +1,14 @@
+server {
+    listen  80;
+    server_name c3d.hz.gyxr.cn;
+
+    #charset koi8-r;
+    #access_log  logs/host.access.log  main;
+
+    root /fs/webroot/GA/c3d/demo;
+    index  index.html;
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+}

@@ -1,0 +1,13 @@
+version: '2'
+services:
+  E0:
+    image: 'gyxr-web:20190111'
+    hostname: 'H91-Engine'
+    restart: always
+    ports:
+      - "7022:22"
+      - "7001:7001"
+      - "7002:7002"
+      - "7003:7003"
+    volumes:
+      - /data2/docker/engine/e0:/fs
