@@ -1,0 +1,16 @@
+version: '2'
+services:
+  wego:
+    image: 'yandex/clickhouse-server:latest'
+    restart: always
+    ports:
+      - 9000:9000
+      - 8123:8123
+    volumes:
+      - /var/lib/clickhouse:/var/lib/clickhouse
+      - /home/clickhouse/users.xml:/etc/clickhouse-server/users.xml
+    ulimits:
+      nofile:
+        soft: 262144 
+        hard: 262144 
+    privileged: true

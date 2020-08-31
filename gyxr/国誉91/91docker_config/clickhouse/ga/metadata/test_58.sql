@@ -1,0 +1,2 @@
+ATTACH DATABASE test_58
+ENGINE = Ordinary
