@@ -42,6 +42,6 @@
   * 置换调节技巧，修改分辨率，保持和图片分辨率一致或者稍低，如果起伏断层，修改amount：10cm->1cm，分辨率下边的选项，尝试修改为follow water normal
   * 显示效果，置换为裂痕，凹凸为表面起伏
   * oc c4d材质的common通道可以统一修改置换的分辨率
-### 024 3S次表面散射
+### 024 3S次表面散射玉石雕像
   * 镜面材质，需要灯光透过材质，需要开启假阴影
-  * [玉石：1.067，投射通道 H107 S18 V80 ,rou octane->dirty->shader6,8,1.5,0,v{猜想：反转法线可以让拨的地方透明，厚的地方不透明})]
+  * [玉石：1.067，投射通道 H107 S18 V80 ,rou octane->dirty->shader6,8,1.5,0,v{猜想：反转法线可以让拨的地方透明，厚的地方不透明}，反射 0.5，medium abs->c4doctane->floattexture 1 scat->c4doctane->floattexture 0.4 密度 115，dump noise]
