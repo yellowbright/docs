@@ -45,3 +45,4 @@
 ### 024 3S次表面散射玉石雕像
   * 镜面材质，需要灯光透过材质，需要开启假阴影
   * [玉石：1.067，投射通道 H107 S18 V80 ,rou octane->dirty->shader6,8,1.5,0,v{猜想：反转法线可以让拨的地方透明，厚的地方不透明}，反射 0.5，medium abs->c4doctane->floattexture 1 scat->c4doctane->floattexture 0.4 密度 115，dump noise]
+### 025 liveDB下载材质
