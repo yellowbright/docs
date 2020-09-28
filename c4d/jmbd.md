@@ -5,3 +5,5 @@
   * 焊接的实质是减面
   * 网格检测
   ![image](https://github.com/yellowbright/docs/blob/master/c4d/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200928094506.png)
+  * 去除极点周围多余的线，先选中多余的线，再使用消除工具
+  
